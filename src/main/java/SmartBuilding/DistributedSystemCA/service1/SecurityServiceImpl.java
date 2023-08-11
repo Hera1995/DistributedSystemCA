@@ -7,11 +7,14 @@ public class SecurityServiceImpl extends SecurityServiceGrpc.SecurityServiceImpl
     @Override
     public void grantAccess(SecurityServiceProto.AccessRequest request, StreamObserver<SecurityServiceProto.AccessResponse> responseObserver) {
         // Implement your logic to grant access
-        // You can use request.getUserID() and request.getRoomID() to access the data
-        // Perform your access grant logic here
-
-        boolean permissionsGranted = true; // For demonstration purposes
-
+        // You can use  and request.getRoomID() to access the data
+        String userID = request.getUserID();
+        String roomID = request.getRoomID();
+        boolean permissionsGranted = false;
+        // For demonstration purposes
+        if (userID.equals("Hera")  && roomID.equals(1)) {
+            permissionsGranted = true;
+        }
         SecurityServiceProto.AccessResponse response = SecurityServiceProto.AccessResponse.newBuilder()
                 .setPermissionsGranted(permissionsGranted)
                 .build();
@@ -24,10 +27,11 @@ public class SecurityServiceImpl extends SecurityServiceGrpc.SecurityServiceImpl
 
     @Override
     public void streamLockStatus(SecurityServiceProto.LockStatusRequest request, StreamObserver<SecurityServiceProto.LockStatusResponse> responseObserver) {
-        // Implement your logic to stream lock status
-        // You can use request.getRoomID() to access the data
-        // Perform your lock status logic here
+
+
         System.out.println("service1 function2 has been invoked");
+
+        String roomID = request.getRoomID();
 
         // For demonstration, let's send a series of lock status updates
         for (int i = 0; i < 5; i++) {

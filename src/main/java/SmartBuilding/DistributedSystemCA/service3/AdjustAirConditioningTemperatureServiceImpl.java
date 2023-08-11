@@ -9,11 +9,11 @@ public class AdjustAirConditioningTemperatureServiceImpl extends AdjustAirCondit
         return new StreamObserver<AdjustAirConditioningTemperatureServiceProto.TemperatureRequest>() {
             @Override
             public void onNext(AdjustAirConditioningTemperatureServiceProto.TemperatureRequest request) {
-                // Implement your logic to adjust the temperature for the specified room
-                // You can use request.getRoomID() and request.getTemperature() to access the data
-                // Perform your temperature adjustment logic here
+
                 System.out.println("service3 function1 has been invoked");
 
+                String roomID = request.getRoomID();
+                float temp = request.getTemperature();
                 AdjustAirConditioningTemperatureServiceProto.TemperatureResponse response = AdjustAirConditioningTemperatureServiceProto.TemperatureResponse.newBuilder()
                         .setMessage("Temperature adjusted successfully")
                         .build();

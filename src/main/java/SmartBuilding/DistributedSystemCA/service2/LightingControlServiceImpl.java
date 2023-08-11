@@ -9,10 +9,11 @@ public class LightingControlServiceImpl extends LightingControlServiceGrpc.Light
         return new StreamObserver<LightingControlServiceProto.LightControlRequest>() {
             @Override
             public void onNext(LightingControlServiceProto.LightControlRequest request) {
-                // Implement your logic to control and monitor lights
-                // You can use request.getRoomID() and request.getSetStatus() to access the data
-                // Perform your lighting control logic here
+
                 System.out.println("service2 function1 has been invoked");
+
+                String roomID = request.getRoomID();
+                boolean status = request.getSetStatus();
                 boolean newStatus = !request.getSetStatus(); // Toggle the status for demonstration purposes
 
                 LightingControlServiceProto.LightControlResponse response = LightingControlServiceProto.LightControlResponse.newBuilder()
