@@ -1,19 +1,20 @@
-package SmartBuilding.DistributedSystemCA;
+package SmartBuilding.DistributedSystemCA.service1;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 import java.io.IOException;
 
-public class AdjustAirConditioningTemperatureServer {
+public class SecurityServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         // Create an instance of your service implementation
-        AdjustAirConditioningTemperatureServiceImpl serviceImpl = new AdjustAirConditioningTemperatureServiceImpl();
+        SecurityServiceImpl serviceImpl = new SecurityServiceImpl();
 
         // Create a gRPC server
-        Server server = ServerBuilder.forPort(50051) // Use the desired port
+        Server server = ServerBuilder.forPort(50053) // Use the desired port
                 .addService(serviceImpl)
                 .build();
 
@@ -22,10 +23,10 @@ public class AdjustAirConditioningTemperatureServer {
 
         // Register with jmDNS
         JmDNS jmdns = JmDNS.create();
-        ServiceInfo serviceInfo = ServiceInfo.create("_your_service_name._tcp.local.", "AdjustAirConditioningTemperatureService", 50051, "path=/");
+        ServiceInfo serviceInfo = ServiceInfo.create("_your_service_name._tcp.local.", "SecurityService", 50053, "path=/");
         jmdns.registerService(serviceInfo);
 
-        System.out.println("Server started and registered with jmDNS");
+        System.out.println("Security Server started and registered with jmDNS");
 
         // Shut down the server gracefully on JVM shutdown
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

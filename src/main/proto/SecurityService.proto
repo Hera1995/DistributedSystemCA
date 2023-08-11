@@ -3,7 +3,7 @@ syntax = "proto3";
 option java_multiple_files = false;
 option java_outer_classname = "SecurityServiceProto";
 option objc_class_prefix = "SB";
-option java_package = "SmartBuilding.DistributedSystemCA";
+option java_package = "SmartBuilding.DistributedSystemCA.service1";
 
 package DistributedSystemCA;
 
