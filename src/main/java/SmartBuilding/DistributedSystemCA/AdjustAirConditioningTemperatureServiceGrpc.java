@@ -6,7 +6,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.55.1)",
-    comments = "Source: SmartBuilding.proto")
+    comments = "Source: AdjustAirConditioningTemperatureService.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class AdjustAirConditioningTemperatureServiceGrpc {
 
@@ -15,29 +15,29 @@ public final class AdjustAirConditioningTemperatureServiceGrpc {
   public static final String SERVICE_NAME = "DistributedSystemCA.AdjustAirConditioningTemperatureService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.TemperatureRequest,
-      SmartBuilding.DistributedSystemCA.TemperatureResponse> getSetTemperatureMethod;
+  private static volatile io.grpc.MethodDescriptor<TemperatureRequest,
+      TemperatureResponse> getSetTemperatureMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SetTemperature",
-      requestType = SmartBuilding.DistributedSystemCA.TemperatureRequest.class,
-      responseType = SmartBuilding.DistributedSystemCA.TemperatureResponse.class,
+      requestType = TemperatureRequest.class,
+      responseType = TemperatureResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.TemperatureRequest,
-      SmartBuilding.DistributedSystemCA.TemperatureResponse> getSetTemperatureMethod() {
-    io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.TemperatureRequest, SmartBuilding.DistributedSystemCA.TemperatureResponse> getSetTemperatureMethod;
+  public static io.grpc.MethodDescriptor<TemperatureRequest,
+      TemperatureResponse> getSetTemperatureMethod() {
+    io.grpc.MethodDescriptor<TemperatureRequest, TemperatureResponse> getSetTemperatureMethod;
     if ((getSetTemperatureMethod = AdjustAirConditioningTemperatureServiceGrpc.getSetTemperatureMethod) == null) {
       synchronized (AdjustAirConditioningTemperatureServiceGrpc.class) {
         if ((getSetTemperatureMethod = AdjustAirConditioningTemperatureServiceGrpc.getSetTemperatureMethod) == null) {
           AdjustAirConditioningTemperatureServiceGrpc.getSetTemperatureMethod = getSetTemperatureMethod =
-              io.grpc.MethodDescriptor.<SmartBuilding.DistributedSystemCA.TemperatureRequest, SmartBuilding.DistributedSystemCA.TemperatureResponse>newBuilder()
+              io.grpc.MethodDescriptor.<TemperatureRequest, TemperatureResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SetTemperature"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  SmartBuilding.DistributedSystemCA.TemperatureRequest.getDefaultInstance()))
+                  TemperatureRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  SmartBuilding.DistributedSystemCA.TemperatureResponse.getDefaultInstance()))
+                  TemperatureResponse.getDefaultInstance()))
               .setSchemaDescriptor(new AdjustAirConditioningTemperatureServiceMethodDescriptorSupplier("SetTemperature"))
               .build();
         }
@@ -96,8 +96,8 @@ public final class AdjustAirConditioningTemperatureServiceGrpc {
 
     /**
      */
-    default io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.TemperatureRequest> setTemperature(
-        io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.TemperatureResponse> responseObserver) {
+    default io.grpc.stub.StreamObserver<TemperatureRequest> setTemperature(
+        io.grpc.stub.StreamObserver<TemperatureResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSetTemperatureMethod(), responseObserver);
     }
   }
@@ -131,8 +131,8 @@ public final class AdjustAirConditioningTemperatureServiceGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.TemperatureRequest> setTemperature(
-        io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.TemperatureResponse> responseObserver) {
+    public io.grpc.stub.StreamObserver<TemperatureRequest> setTemperature(
+        io.grpc.stub.StreamObserver<TemperatureResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getSetTemperatureMethod(), getCallOptions()), responseObserver);
     }
@@ -203,7 +203,7 @@ public final class AdjustAirConditioningTemperatureServiceGrpc {
       switch (methodId) {
         case METHODID_SET_TEMPERATURE:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.setTemperature(
-              (io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.TemperatureResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<TemperatureResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -216,8 +216,8 @@ public final class AdjustAirConditioningTemperatureServiceGrpc {
           getSetTemperatureMethod(),
           io.grpc.stub.ServerCalls.asyncClientStreamingCall(
             new MethodHandlers<
-              SmartBuilding.DistributedSystemCA.TemperatureRequest,
-              SmartBuilding.DistributedSystemCA.TemperatureResponse>(
+              TemperatureRequest,
+              TemperatureResponse>(
                 service, METHODID_SET_TEMPERATURE)))
         .build();
   }
@@ -228,7 +228,7 @@ public final class AdjustAirConditioningTemperatureServiceGrpc {
 
     @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return SmartBuilding.DistributedSystemCA.SmartBuildingProto.getDescriptor();
+      return AdjustAirConditioningTemperatureServiceProto.getDescriptor();
     }
 
     @Override

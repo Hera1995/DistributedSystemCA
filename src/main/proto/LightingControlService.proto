@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "LightingControlServiceProto";
+option objc_class_prefix = "SB";
+option java_package = "SmartBuilding.DistributedSystemCA";
+
+package DistributedSystemCA;
+
+//service2: Automatic Lighting Control Service
+//function1: Control multiple lights and check light status - bidirectional streaming
+message LightControlRequest {
+  string roomID = 1;
+  bool setStatus = 2;
+}
+
+message LightControlResponse {
+  bool status = 1;
+  string message = 2;
+}
+
+service LightingControlService {
+  rpc MonitorAndControlLights (stream LightControlRequest) returns (stream LightControlResponse);
+}

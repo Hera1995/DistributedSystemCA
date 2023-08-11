@@ -6,7 +6,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.55.1)",
-    comments = "Source: SmartBuilding.proto")
+    comments = "Source: SecurityService.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class SecurityServiceGrpc {
 
@@ -15,29 +15,29 @@ public final class SecurityServiceGrpc {
   public static final String SERVICE_NAME = "DistributedSystemCA.SecurityService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.AccessRequest,
-      SmartBuilding.DistributedSystemCA.AccessResponse> getGrantAccessMethod;
+  private static volatile io.grpc.MethodDescriptor<AccessRequest,
+      AccessResponse> getGrantAccessMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GrantAccess",
-      requestType = SmartBuilding.DistributedSystemCA.AccessRequest.class,
-      responseType = SmartBuilding.DistributedSystemCA.AccessResponse.class,
+      requestType = AccessRequest.class,
+      responseType = AccessResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.AccessRequest,
-      SmartBuilding.DistributedSystemCA.AccessResponse> getGrantAccessMethod() {
-    io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.AccessRequest, SmartBuilding.DistributedSystemCA.AccessResponse> getGrantAccessMethod;
+  public static io.grpc.MethodDescriptor<AccessRequest,
+      AccessResponse> getGrantAccessMethod() {
+    io.grpc.MethodDescriptor<AccessRequest, AccessResponse> getGrantAccessMethod;
     if ((getGrantAccessMethod = SecurityServiceGrpc.getGrantAccessMethod) == null) {
       synchronized (SecurityServiceGrpc.class) {
         if ((getGrantAccessMethod = SecurityServiceGrpc.getGrantAccessMethod) == null) {
           SecurityServiceGrpc.getGrantAccessMethod = getGrantAccessMethod =
-              io.grpc.MethodDescriptor.<SmartBuilding.DistributedSystemCA.AccessRequest, SmartBuilding.DistributedSystemCA.AccessResponse>newBuilder()
+              io.grpc.MethodDescriptor.<AccessRequest, AccessResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GrantAccess"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  SmartBuilding.DistributedSystemCA.AccessRequest.getDefaultInstance()))
+                  AccessRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  SmartBuilding.DistributedSystemCA.AccessResponse.getDefaultInstance()))
+                  AccessResponse.getDefaultInstance()))
               .setSchemaDescriptor(new SecurityServiceMethodDescriptorSupplier("GrantAccess"))
               .build();
         }
@@ -46,29 +46,29 @@ public final class SecurityServiceGrpc {
     return getGrantAccessMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.LockStatusRequest,
-      SmartBuilding.DistributedSystemCA.LockStatusResponse> getStreamLockStatusMethod;
+  private static volatile io.grpc.MethodDescriptor<LockStatusRequest,
+      LockStatusResponse> getStreamLockStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "StreamLockStatus",
-      requestType = SmartBuilding.DistributedSystemCA.LockStatusRequest.class,
-      responseType = SmartBuilding.DistributedSystemCA.LockStatusResponse.class,
+      requestType = LockStatusRequest.class,
+      responseType = LockStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.LockStatusRequest,
-      SmartBuilding.DistributedSystemCA.LockStatusResponse> getStreamLockStatusMethod() {
-    io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.LockStatusRequest, SmartBuilding.DistributedSystemCA.LockStatusResponse> getStreamLockStatusMethod;
+  public static io.grpc.MethodDescriptor<LockStatusRequest,
+      LockStatusResponse> getStreamLockStatusMethod() {
+    io.grpc.MethodDescriptor<LockStatusRequest, LockStatusResponse> getStreamLockStatusMethod;
     if ((getStreamLockStatusMethod = SecurityServiceGrpc.getStreamLockStatusMethod) == null) {
       synchronized (SecurityServiceGrpc.class) {
         if ((getStreamLockStatusMethod = SecurityServiceGrpc.getStreamLockStatusMethod) == null) {
           SecurityServiceGrpc.getStreamLockStatusMethod = getStreamLockStatusMethod =
-              io.grpc.MethodDescriptor.<SmartBuilding.DistributedSystemCA.LockStatusRequest, SmartBuilding.DistributedSystemCA.LockStatusResponse>newBuilder()
+              io.grpc.MethodDescriptor.<LockStatusRequest, LockStatusResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "StreamLockStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  SmartBuilding.DistributedSystemCA.LockStatusRequest.getDefaultInstance()))
+                  LockStatusRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  SmartBuilding.DistributedSystemCA.LockStatusResponse.getDefaultInstance()))
+                  LockStatusResponse.getDefaultInstance()))
               .setSchemaDescriptor(new SecurityServiceMethodDescriptorSupplier("StreamLockStatus"))
               .build();
         }
@@ -127,15 +127,15 @@ public final class SecurityServiceGrpc {
 
     /**
      */
-    default void grantAccess(SmartBuilding.DistributedSystemCA.AccessRequest request,
-        io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.AccessResponse> responseObserver) {
+    default void grantAccess(AccessRequest request,
+                             io.grpc.stub.StreamObserver<AccessResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGrantAccessMethod(), responseObserver);
     }
 
     /**
      */
-    default void streamLockStatus(SmartBuilding.DistributedSystemCA.LockStatusRequest request,
-        io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.LockStatusResponse> responseObserver) {
+    default void streamLockStatus(LockStatusRequest request,
+                                  io.grpc.stub.StreamObserver<LockStatusResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStreamLockStatusMethod(), responseObserver);
     }
   }
@@ -169,16 +169,16 @@ public final class SecurityServiceGrpc {
 
     /**
      */
-    public void grantAccess(SmartBuilding.DistributedSystemCA.AccessRequest request,
-        io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.AccessResponse> responseObserver) {
+    public void grantAccess(AccessRequest request,
+                            io.grpc.stub.StreamObserver<AccessResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGrantAccessMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void streamLockStatus(SmartBuilding.DistributedSystemCA.LockStatusRequest request,
-        io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.LockStatusResponse> responseObserver) {
+    public void streamLockStatus(LockStatusRequest request,
+                                 io.grpc.stub.StreamObserver<LockStatusResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getStreamLockStatusMethod(), getCallOptions()), request, responseObserver);
     }
@@ -202,15 +202,15 @@ public final class SecurityServiceGrpc {
 
     /**
      */
-    public SmartBuilding.DistributedSystemCA.AccessResponse grantAccess(SmartBuilding.DistributedSystemCA.AccessRequest request) {
+    public AccessResponse grantAccess(AccessRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGrantAccessMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<SmartBuilding.DistributedSystemCA.LockStatusResponse> streamLockStatus(
-        SmartBuilding.DistributedSystemCA.LockStatusRequest request) {
+    public java.util.Iterator<LockStatusResponse> streamLockStatus(
+        LockStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getStreamLockStatusMethod(), getCallOptions(), request);
     }
@@ -234,8 +234,8 @@ public final class SecurityServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<SmartBuilding.DistributedSystemCA.AccessResponse> grantAccess(
-        SmartBuilding.DistributedSystemCA.AccessRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<AccessResponse> grantAccess(
+        AccessRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGrantAccessMethod(), getCallOptions()), request);
     }
@@ -262,12 +262,12 @@ public final class SecurityServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GRANT_ACCESS:
-          serviceImpl.grantAccess((SmartBuilding.DistributedSystemCA.AccessRequest) request,
-              (io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.AccessResponse>) responseObserver);
+          serviceImpl.grantAccess((AccessRequest) request,
+              (io.grpc.stub.StreamObserver<AccessResponse>) responseObserver);
           break;
         case METHODID_STREAM_LOCK_STATUS:
-          serviceImpl.streamLockStatus((SmartBuilding.DistributedSystemCA.LockStatusRequest) request,
-              (io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.LockStatusResponse>) responseObserver);
+          serviceImpl.streamLockStatus((LockStatusRequest) request,
+              (io.grpc.stub.StreamObserver<LockStatusResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -291,15 +291,15 @@ public final class SecurityServiceGrpc {
           getGrantAccessMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              SmartBuilding.DistributedSystemCA.AccessRequest,
-              SmartBuilding.DistributedSystemCA.AccessResponse>(
+              AccessRequest,
+              AccessResponse>(
                 service, METHODID_GRANT_ACCESS)))
         .addMethod(
           getStreamLockStatusMethod(),
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
-              SmartBuilding.DistributedSystemCA.LockStatusRequest,
-              SmartBuilding.DistributedSystemCA.LockStatusResponse>(
+              LockStatusRequest,
+              LockStatusResponse>(
                 service, METHODID_STREAM_LOCK_STATUS)))
         .build();
   }
@@ -310,7 +310,7 @@ public final class SecurityServiceGrpc {
 
     @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return SmartBuilding.DistributedSystemCA.SmartBuildingProto.getDescriptor();
+      return SecurityServiceProto.getDescriptor();
     }
 
     @Override

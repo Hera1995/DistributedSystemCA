@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "SecurityServiceProto";
+option objc_class_prefix = "SB";
+option java_package = "SmartBuilding.DistributedSystemCA";
+
+package DistributedSystemCA;
+
+//service1: Security Service
+//function1: GrantAccess - unary
+message AccessRequest {
+  string userID = 1;
+  string roomID = 2;
+}
+
+message AccessResponse {
+  bool permissionsGranted = 1;
+}
+
+//function2: Check lock status - server streaming
+message LockStatusRequest {
+  string roomID = 1;
+}
+
+message LockStatusResponse {
+  string lockID = 1;
+  bool isLocked = 2;
+}
+
+service SecurityService {
+  rpc GrantAccess (AccessRequest) returns (AccessResponse);
+  rpc StreamLockStatus (LockStatusRequest) returns (stream LockStatusResponse);
+}

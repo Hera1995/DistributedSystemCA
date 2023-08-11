@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "AdjustAirConditioningTemperatureServiceProto";
+option objc_class_prefix = "SB";
+option java_package = "SmartBuilding.DistributedSystemCA";
+
+package DistributedSystemCA;
+
+//service3: Adjust Air Conditioning Temperature Service
+//function1: Adjust air conditioning temperature in multiple rooms - Client streaming
+message TemperatureRequest {
+  string roomID = 1;
+  float temperature = 2;
+}
+
+message TemperatureResponse {
+  string message = 1;
+}
+
+service AdjustAirConditioningTemperatureService {
+  rpc SetTemperature (stream TemperatureRequest) returns (TemperatureResponse);
+}

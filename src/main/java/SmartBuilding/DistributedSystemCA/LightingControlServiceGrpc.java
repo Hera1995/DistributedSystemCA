@@ -6,7 +6,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.55.1)",
-    comments = "Source: SmartBuilding.proto")
+    comments = "Source: LightingControlService.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class LightingControlServiceGrpc {
 
@@ -15,29 +15,29 @@ public final class LightingControlServiceGrpc {
   public static final String SERVICE_NAME = "DistributedSystemCA.LightingControlService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.LightControlRequest,
-      SmartBuilding.DistributedSystemCA.LightControlResponse> getMonitorAndControlLightsMethod;
+  private static volatile io.grpc.MethodDescriptor<LightControlRequest,
+      LightControlResponse> getMonitorAndControlLightsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "MonitorAndControlLights",
-      requestType = SmartBuilding.DistributedSystemCA.LightControlRequest.class,
-      responseType = SmartBuilding.DistributedSystemCA.LightControlResponse.class,
+      requestType = LightControlRequest.class,
+      responseType = LightControlResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.LightControlRequest,
-      SmartBuilding.DistributedSystemCA.LightControlResponse> getMonitorAndControlLightsMethod() {
-    io.grpc.MethodDescriptor<SmartBuilding.DistributedSystemCA.LightControlRequest, SmartBuilding.DistributedSystemCA.LightControlResponse> getMonitorAndControlLightsMethod;
+  public static io.grpc.MethodDescriptor<LightControlRequest,
+      LightControlResponse> getMonitorAndControlLightsMethod() {
+    io.grpc.MethodDescriptor<LightControlRequest, LightControlResponse> getMonitorAndControlLightsMethod;
     if ((getMonitorAndControlLightsMethod = LightingControlServiceGrpc.getMonitorAndControlLightsMethod) == null) {
       synchronized (LightingControlServiceGrpc.class) {
         if ((getMonitorAndControlLightsMethod = LightingControlServiceGrpc.getMonitorAndControlLightsMethod) == null) {
           LightingControlServiceGrpc.getMonitorAndControlLightsMethod = getMonitorAndControlLightsMethod =
-              io.grpc.MethodDescriptor.<SmartBuilding.DistributedSystemCA.LightControlRequest, SmartBuilding.DistributedSystemCA.LightControlResponse>newBuilder()
+              io.grpc.MethodDescriptor.<LightControlRequest, LightControlResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "MonitorAndControlLights"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  SmartBuilding.DistributedSystemCA.LightControlRequest.getDefaultInstance()))
+                  LightControlRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  SmartBuilding.DistributedSystemCA.LightControlResponse.getDefaultInstance()))
+                  LightControlResponse.getDefaultInstance()))
               .setSchemaDescriptor(new LightingControlServiceMethodDescriptorSupplier("MonitorAndControlLights"))
               .build();
         }
@@ -96,8 +96,8 @@ public final class LightingControlServiceGrpc {
 
     /**
      */
-    default io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.LightControlRequest> monitorAndControlLights(
-        io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.LightControlResponse> responseObserver) {
+    default io.grpc.stub.StreamObserver<LightControlRequest> monitorAndControlLights(
+        io.grpc.stub.StreamObserver<LightControlResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getMonitorAndControlLightsMethod(), responseObserver);
     }
   }
@@ -131,8 +131,8 @@ public final class LightingControlServiceGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.LightControlRequest> monitorAndControlLights(
-        io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.LightControlResponse> responseObserver) {
+    public io.grpc.stub.StreamObserver<LightControlRequest> monitorAndControlLights(
+        io.grpc.stub.StreamObserver<LightControlResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getMonitorAndControlLightsMethod(), getCallOptions()), responseObserver);
     }
@@ -203,7 +203,7 @@ public final class LightingControlServiceGrpc {
       switch (methodId) {
         case METHODID_MONITOR_AND_CONTROL_LIGHTS:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.monitorAndControlLights(
-              (io.grpc.stub.StreamObserver<SmartBuilding.DistributedSystemCA.LightControlResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<LightControlResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -216,8 +216,8 @@ public final class LightingControlServiceGrpc {
           getMonitorAndControlLightsMethod(),
           io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
             new MethodHandlers<
-              SmartBuilding.DistributedSystemCA.LightControlRequest,
-              SmartBuilding.DistributedSystemCA.LightControlResponse>(
+              LightControlRequest,
+              LightControlResponse>(
                 service, METHODID_MONITOR_AND_CONTROL_LIGHTS)))
         .build();
   }
@@ -228,7 +228,7 @@ public final class LightingControlServiceGrpc {
 
     @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return SmartBuilding.DistributedSystemCA.SmartBuildingProto.getDescriptor();
+      return LightingControlServiceProto.getDescriptor();
     }
 
     @Override
