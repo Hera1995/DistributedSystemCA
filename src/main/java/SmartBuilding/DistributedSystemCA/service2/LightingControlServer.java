@@ -23,7 +23,7 @@ public class LightingControlServer {
 
         // Register with jmDNS
         JmDNS jmdns = JmDNS.create();
-        ServiceInfo serviceInfo = ServiceInfo.create("_your_service_name._tcp.local.", "LightingControlService", 50052, "path=/");
+        ServiceInfo serviceInfo = ServiceInfo.create("_lighting_control._tcp.local.", "LightingControlService", 50052, "path=/");
         jmdns.registerService(serviceInfo);
 
         System.out.println("Lighting Control Server started and registered with jmDNS");

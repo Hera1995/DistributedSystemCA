@@ -23,7 +23,7 @@ public class SecurityServer {
 
         // Register with jmDNS
         JmDNS jmdns = JmDNS.create();
-        ServiceInfo serviceInfo = ServiceInfo.create("_your_service_name._tcp.local.", "SecurityService", 50053, "path=/");
+        ServiceInfo serviceInfo = ServiceInfo.create("_security_service._tcp.local.", "SecurityService", 50053, "path=/");
         jmdns.registerService(serviceInfo);
 
         System.out.println("Security Server started and registered with jmDNS");

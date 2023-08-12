@@ -22,7 +22,7 @@ public class AdjustAirConditioningTemperatureServer {
 
         // Register with jmDNS
         JmDNS jmdns = JmDNS.create();
-        ServiceInfo serviceInfo = ServiceInfo.create("_your_service_name._tcp.local.", "AdjustAirConditioningTemperatureService", 50051, "path=/");
+        ServiceInfo serviceInfo = ServiceInfo.create("_adjust_air_conditioning_temperature._tcp.local.", "AdjustAirConditioningTemperatureService", 50051, "path=/");
         jmdns.registerService(serviceInfo);
 
         System.out.println("Server started and registered with jmDNS");

@@ -4,23 +4,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 
+import SmartBuilding.DistributedSystemCA.service1.SecurityServiceProto;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.stub.StreamObserver;
-import SmartBuilding.DistributedSystemCA.service1.SecurityServiceProto;
 import SmartBuilding.DistributedSystemCA.service1.SecurityServiceGrpc;
+import io.grpc.stub.StreamObserver;
 
-public class SecurityClient {
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
+import java.io.IOException;
+import java.net.InetAddress;
+
+public class SecurityClientWithDiscoveryNew {
     private JFrame frame;
     private JTextArea logTextArea;
     private JButton accessButton;
     private JButton lockStatusButton;
-    private SecurityServiceClient serviceClient;
+    private SecurityServiceClientNew serviceClient;
 
-    public SecurityClient() {
-        frame = new JFrame("Security Client");
+    public SecurityClientWithDiscoveryNew() {
+        frame = new JFrame("Security Client with Discovery");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
         frame.setLayout(new BorderLayout());
@@ -36,7 +40,7 @@ public class SecurityClient {
         buttonPanel.add(lockStatusButton);
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
-        serviceClient = new SecurityServiceClient(logTextArea);
+        serviceClient = new SecurityServiceClientNew(logTextArea);
 
         accessButton.addActionListener(new ActionListener() {
             @Override
@@ -59,23 +63,40 @@ public class SecurityClient {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SecurityClient();
+                new SecurityClientWithDiscoveryNew();
             }
         });
     }
 }
 
-class SecurityServiceClient {
+class SecurityServiceClientNew {
     private JTextArea logTextArea;
     private ManagedChannel channel;
     private SecurityServiceGrpc.SecurityServiceBlockingStub blockingStub;
     private SecurityServiceGrpc.SecurityServiceStub asyncStub;
 
-    public SecurityServiceClient(JTextArea logTextArea) {
+    public SecurityServiceClientNew(JTextArea logTextArea) {
         this.logTextArea = logTextArea;
-        channel = ManagedChannelBuilder.forAddress("localhost", 50053).usePlaintext().build();
-        blockingStub = SecurityServiceGrpc.newBlockingStub(channel);
-        asyncStub = SecurityServiceGrpc.newStub(channel);
+        // Discover the service using jmDNS
+        try {
+            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+            ServiceInfo[] services = jmdns.list("_security_service._tcp.local.");
+            if (services.length > 0) {
+                ServiceInfo serviceInfo = services[0];
+                String host = serviceInfo.getHostAddresses()[0];
+                int port = serviceInfo.getPort();
+
+                // Create a channel using the discovered service information
+                channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+                blockingStub = SecurityServiceGrpc.newBlockingStub(channel);
+                asyncStub = SecurityServiceGrpc.newStub(channel);
+            } else {
+                logTextArea.append("No service found.\n");
+            }
+            jmdns.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void invokeGrantAccess() {
@@ -113,13 +134,4 @@ class SecurityServiceClient {
                 logTextArea.append("Lock status streaming completed.\n");
             }
         });
-    }
-
-    public void shutdown() {
-        try {
-            channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            logTextArea.append("Error: " + e.getMessage() + "\n");
-        }
-    }
-}
+    }}

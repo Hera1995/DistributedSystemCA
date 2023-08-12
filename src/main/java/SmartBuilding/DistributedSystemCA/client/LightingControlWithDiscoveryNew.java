@@ -11,15 +11,19 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import SmartBuilding.DistributedSystemCA.service2.LightingControlServiceGrpc;
 import SmartBuilding.DistributedSystemCA.service2.LightingControlServiceProto;
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
+import java.io.IOException;
+import java.net.InetAddress;
 
-public class LightingControlClient {
+public class LightingControlWithDiscoveryNew {
     private JFrame frame;
     private JTextArea logTextArea;
     private JButton controlButton;
-    private LightingControlServiceClient serviceClient;
+    private LightingControlServiceClientNew serviceClient;
 
-    public LightingControlClient() {
-        frame = new JFrame("Lighting Control Client");
+    public LightingControlWithDiscoveryNew() {
+        frame = new JFrame("Lighting Control Client with Discovery");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
         frame.setLayout(new BorderLayout());
@@ -33,7 +37,7 @@ public class LightingControlClient {
         buttonPanel.add(controlButton);
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
-        serviceClient = new LightingControlServiceClient(logTextArea);
+        serviceClient = new LightingControlServiceClientNew(logTextArea);
 
         controlButton.addActionListener(new ActionListener() {
             @Override
@@ -49,21 +53,39 @@ public class LightingControlClient {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LightingControlClient();
+                new LightingControlWithDiscoveryNew();
             }
         });
     }
 }
 
-class LightingControlServiceClient {
+class LightingControlServiceClientNew {
     private JTextArea logTextArea;
     private ManagedChannel channel;
     private LightingControlServiceGrpc.LightingControlServiceStub asyncStub;
 
-    public LightingControlServiceClient(JTextArea logTextArea) {
+    public LightingControlServiceClientNew(JTextArea logTextArea) {
         this.logTextArea = logTextArea;
-        channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
-        asyncStub = LightingControlServiceGrpc.newStub(channel);
+
+        // Discover the service using jmDNS
+        try {
+            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+            ServiceInfo[] services = jmdns.list("_lighting_control._tcp.local.");
+            if (services.length > 0) {
+                ServiceInfo serviceInfo = services[0];
+                String host = serviceInfo.getHostAddresses()[0];
+                int port = serviceInfo.getPort();
+
+                // Create a channel using the discovered service information
+                channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+                asyncStub = LightingControlServiceGrpc.newStub(channel);
+            } else {
+                logTextArea.append("No service found.\n");
+            }
+            jmdns.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void startLightControl() {
