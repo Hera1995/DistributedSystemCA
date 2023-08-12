@@ -6,8 +6,7 @@ public class SecurityServiceImpl extends SecurityServiceGrpc.SecurityServiceImpl
 
     @Override
     public void grantAccess(SecurityServiceProto.AccessRequest request, StreamObserver<SecurityServiceProto.AccessResponse> responseObserver) {
-        // Implement your logic to grant access
-        // You can use  and request.getRoomID() to access the data
+        //data members
         String userID = request.getUserID();
         String roomID = request.getRoomID();
         boolean permissionsGranted = false;
@@ -33,7 +32,7 @@ public class SecurityServiceImpl extends SecurityServiceGrpc.SecurityServiceImpl
 
         String roomID = request.getRoomID();
 
-        // For demonstration, let's send a series of lock status updates
+        // For demonstration, just send a series of lock status updates
         for (int i = 0; i < 5; i++) {
             SecurityServiceProto.LockStatusResponse response = SecurityServiceProto.LockStatusResponse.newBuilder()
                     .setLockID("Lock_" + i)
